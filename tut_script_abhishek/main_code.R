@@ -1,21 +1,9 @@
-install.packages('sf')
-install.packages('tigris')
-install.packages('tidyverse')
-install.packages('stars')
-install.packages('MetBrewer')
-install.packages('colorspace')
-install.packages('sp')
-install.packages('RColorBrewer')
-remotes::install_github("tylermorganwall/rayrender")
-remotes::install_github("tylermorganwall/rayshader")
-
-
-
+# Loading libraries
 library(sf)
 library(tigris)
 library(tidyverse)
 library(stars)
-library(rayshader)
+library(rayshader) # while installing, had to keep build = 'FALSE
 library(MetBrewer)
 library(colorspace)
 library(sfheaders)
@@ -53,7 +41,7 @@ state_level_map |>
   ggplot() +
   geom_sf() +
   geom_sf(data = bottom_left) +
-  geom_sf(data = bottom_right, color = "red")
+  geom_sf(data = bottom_right, color = "steelblue")
 
 width <- st_distance(bottom_left, bottom_right)
 
@@ -95,7 +83,7 @@ swatchplot(texture)
 # plot that 3d thing!
 swatchplot(c1[3])
 
-rgl::rgl.close()
+rgl::close3d()
 
 mat |> 
   height_shade(texture = texture) |> 
